@@ -1,7 +1,7 @@
 INSERT INTO MEMBER (MEMBER_ID)
 VALUES (1), (2), (3), (4), (5);
 
-INSERT INTO ARTIST (ARTIST_ID, DESCRIPTION, INSTA, NAME, PROFILE_URL, WISH_COUNT, MEMBER_ID)
+INSERT INTO ARTIST (ARTIST_ID, DESCRIPTION, INSTA, NAME, PROFILE_IMAGE_URL, WISH_COUNT, MEMBER_ID)
 VALUES
     (1, '임시 작가입니다', 'good_artist', '김작가', 'https://example.com/profile.jpg', 0, 1),
     (2, '유명 도예가', 'pottery_queen', '박작가', 'https://example.com/profile2.jpg', 0, 3),
@@ -90,6 +90,6 @@ VALUES
     (9, 1, 9),
     (10, 1, 10);
 
-INSERT INTO inquiry (inquiry_id, question, answer, artist_id)
+INSERT INTO INQUIRY (INQUIRY_ID, QUESTION, ANSWER, ARTIST_ID)
 VALUES (1, '배송은 얼마나 걸리나요?', '약 3~5일 소요됩니다.', 1),
        (2, '포장 상태는 어떤가요?', NULL, 1);

@@ -19,9 +19,10 @@ public class Artist extends BaseTimeEntity {
     @NotBlank
     private String name;
 
-    @Column(name = "profile_url")
-    private String profileUrl;
+    @Column(name = "profileImage_url")
+    private String profileImageUrl;
 
+    @NotBlank
     private String description;
 
     private String insta;
