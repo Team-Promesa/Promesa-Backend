@@ -8,10 +8,14 @@ import com.promesa.promesa.common.exception.PromesaCodeException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.io.IOException;
@@ -26,6 +30,26 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         BaseErrorCode code = e.getErrorCode();
         ErrorReason errorReason = code.getErrorReason();
         ErrorResponse errorResponse = ErrorResponse.from(errorReason, request.getRequestURL().toString());
+        return ResponseEntity.status(HttpStatus.valueOf(errorReason.getStatus()))
+                .body(errorResponse);
+    }
+
+    @Override
+    protected ResponseEntity<Object>  handleMethodArgumentNotValid(MethodArgumentNotValidException e,
+                                                                          HttpHeaders headers,
+                                                                          HttpStatusCode status,
+                                                                          WebRequest request) {
+        String message = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+
+        ErrorReason errorReason = ErrorReason.builder()
+                .status(status.value())
+                .code("VALIDATION_400")
+                .reason(message)
+                .build();
+
+        HttpServletRequest servletRequest = ((org.springframework.web.context.request.ServletWebRequest) request).getRequest();
+        String path = servletRequest.getRequestURL().toString();
+        ErrorResponse errorResponse = ErrorResponse.from(errorReason, path);
         return ResponseEntity.status(HttpStatus.valueOf(errorReason.getStatus()))
                 .body(errorResponse);
     }

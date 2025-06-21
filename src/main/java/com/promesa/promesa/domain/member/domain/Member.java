@@ -1,6 +1,7 @@
 package com.promesa.promesa.domain.member.domain;
 
 import com.promesa.promesa.domain.artist.domain.Artist;
+import com.promesa.promesa.domain.review.domain.Review;
 import com.promesa.promesa.domain.wish.domain.Wish;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,6 +10,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +19,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class Member {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
@@ -28,11 +30,13 @@ public class Member {
     private String providerId;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Wish> wishes;
+    private List<Wish> wishes = new ArrayList<>();
 
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
     private Artist artist;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
 
     // 사용자의 이름 업데이트하는 메소드
     public Member updateMember(String name){

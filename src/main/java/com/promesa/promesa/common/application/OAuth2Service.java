@@ -64,6 +64,7 @@ public class OAuth2Service implements OAuth2UserService<OAuth2UserRequest, OAuth
     }
 
     public Member updateOrSaveUser(MemberProfile memberProfile) {
+
         Member member = memberRepository
                 .findByProviderAndProviderId(memberProfile.getProvider(), memberProfile.getProviderId())
                 .map(value -> value.updateMember(memberProfile.getName()))

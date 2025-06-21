@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true
@@ -17,6 +17,7 @@ spring:
     init:
       data-locations: classpath:data.sql
       mode: always
+      encoding: UTF-8
 
 logging:
   level:
