@@ -1,6 +1,5 @@
 package com.promesa.promesa.domain.wish.domain;
 
-import com.promesa.promesa.common.domain.BaseTimeEntity;
 import com.promesa.promesa.domain.member.domain.Member;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -11,15 +10,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Wish extends BaseTimeEntity {
+public class Wish {
     @Id @GeneratedValue
     @Column(name = "wish_id")
     private Long id;
 
-    @Column(name = "target_id", nullable = false)
+    @NotNull
+    @Column(name = "target_id")
     private Long targetId;
 
-    @Column(name = "target_type", nullable = false)
+    @NotNull
+    @Column(name = "target_type")
     @Enumerated(EnumType.STRING)
     private TargetType targetType;
 

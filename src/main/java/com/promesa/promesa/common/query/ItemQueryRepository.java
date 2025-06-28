@@ -1,4 +1,4 @@
-package com.promesa.promesa.domain.item.query;
+package com.promesa.promesa.common.query;
 
 import com.promesa.promesa.domain.home.dto.ItemPreviewResponse;
 import com.promesa.promesa.domain.item.domain.Item;
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.promesa.promesa.domain.artist.domain.QArtist.artist;
-import static com.promesa.promesa.domain.exhibition.domain.QExhibitionItem.exhibitionItem;
+import static com.promesa.promesa.domain.item.domain.QExhibitionItem.exhibitionItem;
 import static com.promesa.promesa.domain.item.domain.QItem.item;
 import static com.promesa.promesa.domain.item.domain.QItemImage.itemImage;
 import static com.promesa.promesa.domain.itemCategory.domain.QItemCategory.itemCategory;

@@ -1,6 +1,5 @@
 package com.promesa.promesa.domain.inquiry.domain;
 
-import com.promesa.promesa.common.domain.BaseTimeEntity;
 import com.promesa.promesa.domain.artist.domain.Artist;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +7,7 @@ import lombok.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Inquiry extends BaseTimeEntity {
+public class Inquiry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long inquiryId;

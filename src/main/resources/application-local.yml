@@ -17,7 +17,6 @@ spring:
     init:
       data-locations: classpath:data.sql
       mode: always
-      encoding: UTF-8
 
 logging:
   level:

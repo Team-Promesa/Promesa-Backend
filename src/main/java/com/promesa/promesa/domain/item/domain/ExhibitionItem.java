@@ -1,26 +1,21 @@
 package com.promesa.promesa.domain.item.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ItemImage {
+public class ExhibitionItem {
     @Id @GeneratedValue
-    @Column(name = "item_image_id")
+    @Column(name = "exhibition_item_id")
     private Long id;
 
-    @NotBlank
-    @Column(name = "item_image_key")
-    private String imageKey;
-
-    @NotNull
-    private boolean isThumbnail;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "exhibition_id")
+    private Exhibition exhibition;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
