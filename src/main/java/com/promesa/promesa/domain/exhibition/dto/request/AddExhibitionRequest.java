@@ -12,6 +12,9 @@ public record AddExhibitionRequest(
         @NotBlank(message = "제목은 필수입니다")
         String title,
 
+        @NotBlank(message = "소제목은 필수입니다")
+        String subTitle,
+
         @NotBlank(message = "설명은 필수입니다")
         String description,
 

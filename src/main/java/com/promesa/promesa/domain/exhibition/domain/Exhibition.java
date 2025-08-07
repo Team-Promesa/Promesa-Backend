@@ -28,6 +28,8 @@ public class Exhibition extends BaseTimeEntity {
     @Column(nullable = false)
     private String title;
 
+    private String subtitle;
+
     @NotBlank
     @Column(nullable = false)
     private String description;
@@ -74,8 +76,9 @@ public class Exhibition extends BaseTimeEntity {
     }
 
     @Builder
-    public Exhibition(String title, String description, LocalDate startDate, LocalDate endDate, ExhibitionStatus status) {
+    public Exhibition(String title, String subtitle, String description, LocalDate startDate, LocalDate endDate, ExhibitionStatus status) {
         this.title = title;
+        this.subtitle = subtitle;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -102,6 +105,13 @@ public class Exhibition extends BaseTimeEntity {
             throw ValidationException.EXCEPTION;
         }
         this.title = title;
+    }
+
+    public void setSubtitle(String subTitle) {
+        if (subTitle == null || subTitle.isBlank()) {
+            throw ValidationException.EXCEPTION;
+        }
+        this.subtitle = subTitle;
     }
 
     public void setDescription(String description) {

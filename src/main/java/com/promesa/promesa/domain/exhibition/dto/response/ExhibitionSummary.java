@@ -1,6 +1,5 @@
 package com.promesa.promesa.domain.exhibition.dto.response;
 
-import com.promesa.promesa.common.application.S3Service;
 import com.promesa.promesa.domain.exhibition.domain.Exhibition;
 import com.promesa.promesa.domain.exhibition.domain.ExhibitionStatus;
 
@@ -12,6 +11,7 @@ public record ExhibitionSummary(
         Long id,
         ExhibitionStatus status,
         String title,
+        String subTitle,
         String description,
         List<String> artistNames,    // 참여한 작가 목록
         LocalDate startDate,
@@ -26,6 +26,7 @@ public record ExhibitionSummary(
                 exhibition.getId(),
                 exhibition.getStatus(),
                 exhibition.getTitle(),
+                exhibition.getSubtitle(),
                 exhibition.getDescription(),
                 artistNames,
                 exhibition.getStartDate(),

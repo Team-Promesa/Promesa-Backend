@@ -509,22 +509,23 @@ INSERT INTO exhibition (
     updated_at,
     description,
     title,
+    subtitle,
     exhibition_status,
     start_date,
     end_date
 ) VALUES
       (1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),
-       '따뜻한 봄 작품들', '봄 기획전',
+       '따뜻한 봄 작품들', '봄 기획전', '봄은 따뜻',
        'PAST',     '2025-03-20', '2025-04-20'),
       (2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),
-       '무더운 여름 작품들', '여름 기획전',
+       '무더운 여름 작품들', '여름 기획전', '여름은 무덥',
        'ONGOING',  '2025-06-20', '2025-07-20'),
       (3, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),
-       '상큼한 토마토가 좋아', '토마토 기획전',
+       '상큼한 토마토가 좋아', '토마토 기획전', '멋쟁이 토마토',
        'UPCOMING', '2025-12-20', NULL),
       (4, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),
        '현대적인 감각과 기능성이 돋보이는 모연도예 작가님의 예술 철학을 다양한 작품과 함게 살펴보세요.',
-       '작품 가이드 Ep.01\n모언도예_차도구 소개',
+       '작품 가이드 Ep.01', '모언도예_차도구 소개',
        'PERMANENT','2025-07-29', NULL);
 
 -- 2) EXHIBITION_IMAGE 테이블: 썸네일(is_thumbnail=1)과 상세 이미지(is_thumbnail=0)로 분리
