@@ -33,8 +33,7 @@ public class Artist extends BaseTimeEntity {
     private String profileImageKey;
 
     @Lob
-    @NotBlank
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
     private String insta;
